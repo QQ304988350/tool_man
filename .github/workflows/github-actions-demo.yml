@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  build_image:
     runs-on: ubuntu-latest
     steps:
       -
@@ -25,7 +25,8 @@ jobs:
         with:
           push: true
           tags: registry.cn-hangzhou.aliyuncs.com/304988350/tool_man:latest
-  build:
+  deploy:
+    needs: build_image
     name: deploy
     runs-on: ubuntu-latest
     environment: 	tool_man
