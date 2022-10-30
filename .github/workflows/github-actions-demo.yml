@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: 304988350/tool_man:latest
+          tags: registry.cn-hangzhou.aliyuncs.com/304988350/tool_man:latest
