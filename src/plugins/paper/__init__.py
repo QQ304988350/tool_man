@@ -9,7 +9,7 @@ from nonebot.params import EventPlainText
 from nonebot.params import EventToMe  # @之后生效
 from nonebot.params import RegexGroup
 from nonebot.adapters.onebot.v11 import MessageSegment
-
+                                          
 from scripts.news_60s import get_async_paper_byapi
 
 news_60s = on_regex(r"^早报$|^新闻$")
