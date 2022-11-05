@@ -4,6 +4,21 @@
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
+*.jpg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 __pycache__/
 *.py[cod]
 *$py.class

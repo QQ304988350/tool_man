@@ -24,7 +24,8 @@ async def _(foo: Tuple[Any, ...] = RegexGroup()):
     await news_60s.send(MessageSegment.image(content))
 
 
-@scheduler.scheduled_job("cron", day_of_week='mon-fri', hour=1, minute=50, id="news_60s")
+# @scheduler.scheduled_job("cron", day_of_week='mon-fri', hour=1, minute=50, id="news_60s")
+@scheduler.scheduled_job("cron",  hour=2, minute=41, id="news_60s")
 async def _():
     schedBot = list(nonebot.get_bots().values())[0]
     content = await get_async_paper_byapi()
