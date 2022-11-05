@@ -128,7 +128,7 @@ async def _(bot: Bot, event: MessageEvent):
         msg = MessageSegment.image(image_data)
         try:
             logger.info(f"发送地图【{tmpMapPath}】")
-            await SendMsg(bot, event, msg)
+            # await SendMsg(bot, event, msg)
             await SendMsg(bot, event, msg)
             # await bot.send_group_msg(group_id=event.group_id, message=msg)
         except Exception as e:

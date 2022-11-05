@@ -4,8 +4,7 @@ import os
 Tool_Token = "456dbe534062011ef610f9a7ac9eab4d"
 
 # 此插件根目录
-Tool_Path = "/root/tool_man/src/plugins/Apex_Tool"
-print(Tool_Path,1111111111112222222222)
+Tool_Path = "/app/tool_man/src/plugins/Apex_Tool"
 # 此插件资源目录
 Tool_Assets_Path = f"{Tool_Path}/Assets"
 # QQ绑定的EAID的Json文件路径
