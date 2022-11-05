@@ -9,14 +9,14 @@ from nonebot.params import EventPlainText
 from nonebot.params import EventToMe #@之后生效
 from nonebot.params import RegexGroup
 
-# testMatcher = on_regex("^试试$")
+# testMatcher = on_regex("^试试$", priority=6)
 
 
 # @testMatcher.handle()
 # async def onceHandle(foo: str = EventPlainText(),foo2: bool = EventToMe()):
 #     await testMatcher.send("我还活着!")
 
-# testRe = on_regex("测试(.*)")
+# testRe = on_regex("测试(.*)", priority=6)
 
 # @testRe.handle()
 # async def onceHandle(foo: Tuple[Any, ...] = RegexGroup()):

@@ -8,6 +8,12 @@ from nonebot.adapters.onebot.v11.message import MessageSegment, Message
 from services.log import logger
 
 NICKNAME = "111"
+
+def local_image(path):
+    with open(path,"rb") as f:
+        data_image = f.read()
+    
+    return MessageSegment.image(data_image)
 def image(
         file: Union[str, Path, bytes] = None,
         path: str = None,

@@ -4,9 +4,11 @@ from nonebot.adapters.onebot.v11 import Bot, MessageEvent, Message, Event, Messa
 from services.log import logger
 from PIL import Image, ImageDraw, ImageFont
 from utils.http_utils import AsyncHttpx
+from utils.message_builder import local_image
 from .config import *
 from .utils import *
 import json
+import traceback
 
 __zx_plugin_name__ = "APEX查询工具"
 __plugin_usage__ = """
@@ -119,20 +121,12 @@ async def _(bot: Bot, event: MessageEvent):
         tmpMapPath = f"{Temp_Path}/map_ok.jpg"  # 地图路径
         logger.info(f"保存地图【{tmpMapPath}】")
         image.save(tmpMapPath)
-        with open(tmpMapPath ,'rb') as f:
-            image_data = f.read()
         
-        image_file = f"file:///{tmpMapPath}"
-
-        # msg = f"[CQ:image,file={image_file}]"
-        msg = MessageSegment.image(image_data)
+        msg = local_image(tmpMapPath)
         try:
             logger.info(f"发送地图【{tmpMapPath}】")
-            # await SendMsg(bot, event, msg)
             await SendMsg(bot, event, msg)
-            # await bot.send_group_msg(group_id=event.group_id, message=msg)
         except Exception as e:
-            # await bot.send_group_msg(group_id=event.group_id, message=f"出错啦!\n错误信息：{e}")
             await SendMsg(bot, event, f"出错啦!\n错误信息：{e}")
             logger.info(e)
 
@@ -156,9 +150,9 @@ async def _(bot: Bot, event: MessageEvent):
 
         await addText(image, 50, "当日", 350, 345)
         await addText(image, 50, "本周", 350, 405)
-        image.save(f"{Temp_Path}/mark_ok.jpg")
-        image_file = f"file:///{Temp_Path}/mark_ok.jpg"
-        msg = f"[CQ:image,file={image_file}]"
+        tmpMapPath = f"{Temp_Path}/mark_ok.jpg"
+        image.save(tmpMapPath)
+        msg = local_image(tmpMapPath)
         try:
             # await bot.send_group_msg(group_id=event.group_id, message=msg)
             await SendMsg(bot, event, msg)
@@ -188,9 +182,11 @@ async def _(bot: Bot, event: MessageEvent):
                     await addText(ls, 40, f"排位分数：{rankScore}", x, y + 50)
                     await addText(ls, 40, f"大师总数：{rankTotal}", x, y + 100)
             ls = ls.convert('RGB')
-            ls.save(f"{Temp_Path}/ls_ok.jpg")
-            image_file = f"file:///{Temp_Path}/ls_ok.jpg"
-            msg = f"[CQ:image,file={image_file}]"
+            tmpMapPath = f"{Temp_Path}/ls_ok.jpg"
+            ls.save(tmpMapPath)
+            # image_file = f"file:///{Temp_Path}/ls_ok.jpg"
+            # msg = f"[CQ:image,file={image_file}]"
+            msg = local_image(tmpMapPath)
             # await bot.send_group_msg(group_id=event.group_id, message=msg)
             await SendMsg(bot, event, msg)
         except Exception as e:
@@ -316,9 +312,11 @@ async def _(bot: Bot, event: Event, text: Message = CommandArg()):
             img.paste(arenaPimgh, (1200, 320), mask=arenaPimgh)
             img.paste(icoPimgh, (0, 270), mask=icoPimgh)
             img = img.convert('RGB')
-            img.save(f"{Temp_Path}/{uid}_info.jpg")
-            image_file = f"file:///{Temp_Path}/{uid}_info.jpg"
-            msg = f"[CQ:image,file={image_file}]"
+            tmpMapPath = f"{Temp_Path}/{uid}_info.jpg"
+            img.save(tmpMapPath)
+            # image_file = f"file:///{Temp_Path}/{uid}_info.jpg"
+            # msg = f"[CQ:image,file={image_file}]"
+            msg = local_image(tmpMapPath)
             # await bot.send_group_msg(group_id=event.group_id, message=msg)
             await SendMsg(bot, event, msg)
         except Exception as e:
