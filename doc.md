@@ -1,3 +1,6 @@
 docker run -itd -v /root/workspace/code/tool_man:/root/tool_man -v /root/.ssh:/root/.ssh -p 8080:8080 --name tool_man_dev registry.cn-hangzhou.aliyuncs.com/304988350/tool_man_base:latest
 
 docker run -itd -v /root/workspace/code/tool_man:/root/tool_man -v /root/.ssh:/root/.ssh -p 8080:8080 --name tool_man_dev registry.cn-hangzhou.aliyuncs.com/304988350/tool_man_base:latest
+
+docker commit tool_man_base registry.cn-hangzhou.aliyuncs.com/304988350/tool_man_base:latest
+docker push registry.cn-hangzhou.aliyuncs.com/304988350/tool_man_base:latest
