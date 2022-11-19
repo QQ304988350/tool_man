@@ -23,3 +23,5 @@ dpkg-reconfigure locales
 apt-get install ttf-wqy-zenhei
 
 apt-get install xfonts-intl-chinese wqy*
+
+docker run -itd -v /root/workspace/code/tool_man:/root/tool_man -v /root/.ssh:/root/.ssh -p 8080:8080 --name tool_man_dev_ubuntu registry.cn-hangzhou.aliyuncs.com/304988350/ubuntu_dev:latest
