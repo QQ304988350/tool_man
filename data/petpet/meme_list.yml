@@ -10,6 +10,10 @@ always:
   black_list: []
   mode: 0
   white_list: []
+always_always:
+  black_list: []
+  mode: 0
+  white_list: []
 always_like:
   black_list: []
   mode: 0
@@ -38,7 +42,15 @@ blood_pressure:
   black_list: []
   mode: 0
   white_list: []
+bocchi_draft:
+  black_list: []
+  mode: 0
+  white_list: []
 call_110:
+  black_list: []
+  mode: 0
+  white_list: []
+capoo_rub:
   black_list: []
   mode: 0
   white_list: []
@@ -130,6 +142,10 @@ hug_leg:
   black_list: []
   mode: 0
   white_list: []
+hutao_bite:
+  black_list: []
+  mode: 0
+  white_list: []
 incivilization:
   black_list: []
   mode: 0
@@ -146,11 +162,27 @@ jiujiu:
   black_list: []
   mode: 0
   white_list: []
+karyl_point:
+  black_list: []
+  mode: 0
+  white_list: []
 keepaway:
   black_list: []
   mode: 0
   white_list: []
+kick_ball:
+  black_list: []
+  mode: 0
+  white_list: []
+kirby_hammer:
+  black_list: []
+  mode: 0
+  white_list: []
 kiss:
+  black_list: []
+  mode: 0
+  white_list: []
+klee_eat:
   black_list: []
   mode: 0
   white_list: []
@@ -270,6 +302,10 @@ rip_angrily:
   black_list: []
   mode: 0
   white_list: []
+rise_dead:
+  black_list: []
+  mode: 0
+  white_list: []
 roll:
   black_list: []
   mode: 0
@@ -283,6 +319,10 @@ safe_sense:
   mode: 0
   white_list: []
 shock:
+  black_list: []
+  mode: 0
+  white_list: []
+smash:
   black_list: []
   mode: 0
   white_list: []
@@ -354,7 +394,15 @@ walnutpad:
   black_list: []
   mode: 0
   white_list: []
+wave:
+  black_list: []
+  mode: 0
+  white_list: []
 whyatme:
+  black_list: []
+  mode: 0
+  white_list: []
+wooden_fish:
   black_list: []
   mode: 0
   white_list: []
