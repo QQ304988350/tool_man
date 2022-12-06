@@ -25,3 +25,13 @@ apt-get install ttf-wqy-zenhei
 apt-get install xfonts-intl-chinese wqy*
 
 docker run -itd -v /root/workspace/code/tool_man:/root/tool_man -v /root/.ssh:/root/.ssh -p 8080:8080 --name tool_man_dev_ubuntu registry.cn-hangzhou.aliyuncs.com/304988350/ubuntu_dev:latest
+
+docker run -itd -v /root/workspace/code/tool_man:/app/tool_man -p 8080:8080 --name tool_man_base_ubuntu registry.cn-hangzhou.aliyuncs.com/304988350/ubuntu_dev:latest
+```
+pip install pipx
+pipx ensurepat
+pipx completions
+eval "$(register-python-argcomplete pipx)"
+apt-get install python3-venv
+pipx install poetry
+```
