@@ -9,7 +9,7 @@ from nonebot.params import EventPlainText
 from nonebot.params import EventToMe #@之后生效
 from nonebot.params import RegexGroup
 from .data_source import baike
-from nonebot.adapters.onebot.v11 import MessageSegment, Bot
+from nonebot.adapters.onebot.v11 import MessageSegment, Bot,Message
 
 # testMatcher = on_regex("^试试$", priority=6)
 
@@ -32,5 +32,5 @@ baikeMatcher = on_startswith("百科", priority=6)
 async def onceHandle(event: Event):
     args = str(event.get_plaintext()).strip()[2:].strip()
     data = await baike(args)
-    await baikeMatcher.send("百度百科: \n{}".format(data), at_sender=True)
+    await baikeMatcher.send(Message("百度百科: \n{}".format(data)), at_sender=True)
 
