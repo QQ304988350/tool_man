@@ -35,3 +35,6 @@ eval "$(register-python-argcomplete pipx)"
 apt-get install python3-venv
 pipx install poetry
 ```
+
+docker commit tool_man_dev_ubuntu registry.cn-hangzhou.aliyuncs.com/304988350/tool_man_base:latest
+docker push registry.cn-hangzhou.aliyuncs.com/304988350/tool_man_base:latest
