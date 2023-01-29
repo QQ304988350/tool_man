@@ -1,0 +1,12 @@
+[tool.nonebot]
+plugins = ["nonebot_plugin_apscheduler", "nonebot_plugin_petpet"]
+plugin_dirs = ["src/plugins"]
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple/"
+
