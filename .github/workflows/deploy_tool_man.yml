@@ -42,4 +42,3 @@ jobs:
           docker pull registry.cn-hangzhou.aliyuncs.com/304988350/tool_man:latest
           docker rm -f tool_man
           docker run -itd -p 8080:8080 -e openai_api_key=${{ secrets.OPENAI_API_KEY }} --name tool_man registry.cn-hangzhou.aliyuncs.com/304988350/tool_man:latest
-          docker exec -itd tool_man systemctl start clash
