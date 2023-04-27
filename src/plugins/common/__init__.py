@@ -31,9 +31,6 @@ baikeMatcher = on_startswith("百科", priority=6)
 @baikeMatcher.handle()
 async def onceHandle(event: Event):
     args = str(event.get_plaintext()).strip()[2:].strip()
-    image,abstract = await get_baike(args)
-    mixed_msg = Message()
-    mixed_msg.append(MessageSegment.image(image))
-    mixed_msg.append(abstract)
-    await baikeMatcher.send(mixed_msg, at_sender=True)
+    msg = await get_baike(args)
+    await baikeMatcher.send(msg, at_sender=True)
 

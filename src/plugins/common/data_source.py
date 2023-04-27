@@ -1,6 +1,7 @@
 import httpx
 import asyncio
 from lxml import etree
+from nonebot.adapters.onebot.v11 import MessageSegment, Bot,Message
 
 
 headers = {
@@ -25,13 +26,16 @@ async def get_baike(key_name):
             res = await client.get(f"http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key={key_name}&bk_length=1200")
             if res.status_code == 200:
                 data = res.json()
-                image = data["image"]
-                abstract = data["abstract"]
-                print(image)
-                print(abstract)
-                return image,abstract
+                if data:
+                    mixed_msg = Message()
+                    mixed_msg.append(MessageSegment.image(data["image"]))
+                    mixed_msg.append(data["abstract"])
+                    return mixed_msg
+                else:
+                    return "未收录该词条"
             else:
-                print("接口异常,请稍后重试")
+                return "接口异常,请稍后重试"
+
         except Exception as e:
             print("查询失败:{}".format(e))
             return "查询失败"
@@ -40,4 +44,4 @@ async def get_baike(key_name):
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(baike("测试"))
+    loop.run_until_complete(get_baike("测试"))
