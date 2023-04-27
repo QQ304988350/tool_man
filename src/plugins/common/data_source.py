@@ -23,24 +23,24 @@ async def baike(key):
     res = None
     async with httpx.AsyncClient() as client:
         res = await client.get("https://baike.baidu.com/search/word?word={}".format(key), headers=headers)
-        try:
 
+
+        if res.status_code == 302:
+            first = res.headers.get("Location")
+            first_url = "https:{}".format(first)
+            print(first_url)
+            res = await client.get(first, headers=headers)
             if res.status_code == 302:
-                first = res.headers.get("Location")
-                first_url = "https:{}".format(first)
-                res = await client.get(first_url, headers=headers)
-                if res.status_code == 302:
-                    second = res.headers.get("Location")
-                    second_url = "https://baike.baidu.com"+second
-                    res = await client.get(second_url, headers=headers)
-            if res.status_code == 200:
-                detail_str = get_desc(res.content.decode())
-                if detail_str:
-                    return detail_str
-            else:
-                return "无记录"
-        except Exception as e:
+                second = res.headers.get("Location")
+                second_url = "https://baike.baidu.com"+second
+                res = await client.get(second_url, headers=headers)
+        if res.status_code == 200:
+            detail_str = get_desc(res.content.decode())
+            if detail_str:
+                return detail_str
+        else:
             return "无记录"
+
 
 
 if __name__ == "__main__":
