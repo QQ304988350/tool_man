@@ -19,27 +19,22 @@ def get_desc(html_str):
     return detail_str
 
 
-async def baike(key):
-    res = None
+async def get_baike(key_name):
     async with httpx.AsyncClient() as client:
-        res = await client.get("https://baike.baidu.com/search/word?word={}".format(key), headers=headers)
-
-
-        if res.status_code == 302:
-            first = res.headers.get("Location")
-            first_url = "https:{}".format(first)
-            print(first_url)
-            res = await client.get(first, headers=headers)
-            if res.status_code == 302:
-                second = res.headers.get("Location")
-                second_url = "https://baike.baidu.com"+second
-                res = await client.get(second_url, headers=headers)
-        if res.status_code == 200:
-            detail_str = get_desc(res.content.decode())
-            if detail_str:
-                return detail_str
-        else:
-            return "无记录"
+        try:
+            res = await client.get(f"http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key={key_name}&bk_length=1200")
+            if res.status_code == 200:
+                data = res.json()
+                image = data["image"]
+                abstract = data["abstract"]
+                print(image)
+                print(abstract)
+                return image,abstract
+            else:
+                print("接口异常,请稍后重试")
+        except Exception as e:
+            print("查询失败:{}".format(e))
+            return "查询失败"
 
 
 
