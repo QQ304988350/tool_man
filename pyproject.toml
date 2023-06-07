@@ -1,5 +1,5 @@
 [tool.nonebot]
-plugins = ["nonebot_plugin_apscheduler", "nonebot_plugin_petpet","nonebot_plugin_gpt3"]
+plugins = ["nonebot_plugin_apscheduler", "nonebot_plugin_petpet"]
 plugin_dirs = ["src/plugins"]
 
 [build-system]
