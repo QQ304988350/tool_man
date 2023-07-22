@@ -8,7 +8,7 @@ from nonebot.typing import T_State
 from nonebot.params import EventPlainText
 from nonebot.params import EventToMe #@之后生效
 from nonebot.params import RegexGroup
-from .data_source import get_baike
+from .data_source import baike
 from nonebot.adapters.onebot.v11 import MessageSegment, Bot,Message
 
 # testMatcher = on_regex("^试试$", priority=6)
@@ -31,6 +31,6 @@ baikeMatcher = on_startswith("百科", priority=6)
 @baikeMatcher.handle()
 async def onceHandle(event: Event):
     args = str(event.get_plaintext()).strip()[2:].strip()
-    msg = await get_baike(args)
+    msg = await baike(args)
     await baikeMatcher.send(msg, at_sender=True)
 
