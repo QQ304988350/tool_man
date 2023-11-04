@@ -24,9 +24,15 @@ async def _(foo: Tuple[Any, ...] = RegexGroup()):
     await news_60s.send(MessageSegment.image(content))
 
 
-# @scheduler.scheduled_job("cron", day_of_week='mon-fri', hour=1, minute=50, id="news_60s")
-@scheduler.scheduled_job("cron",  hour=2, minute=41, id="news_60s")
+@scheduler.scheduled_job("cron", day_of_week='mon-fri', hour=9, minute=30, id="news_60s")
 async def _():
     schedBot = list(nonebot.get_bots().values())[0]
     content = await get_async_paper_byapi()
-    await schedBot.call_api("send_msg", **{"message": MessageSegment.image(content), "group_id": "435491060"})
+    group_list = ["314329481", "260726956",
+                  "835093566", "1067030489", "859136792"]
+    for group_id in group_list:
+        try:
+            await schedBot.call_api("send_msg", **{"message": MessageSegment.image(content), "group_id": group_id})
+        except Exception as e:
+            print(e)
+            pass
