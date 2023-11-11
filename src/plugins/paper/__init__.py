@@ -1,5 +1,5 @@
 from nonebot_plugin_apscheduler import scheduler
-from scripts.news_60s import get_async_paper_byapi
+from .data_source import get_async_paper_byapi
 from typing import Any, Tuple
 from nonebot import on_command, on_message, on_regex
 from nonebot.rule import to_me
